@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <script type="text/javascript" src="/vendors/angular.min.js"></script>
-    <script type="text/javascript" src="/scripts/client.js"></script>
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <script type="text/javascript" src="/vendors/angular.min.js"></script>
+  <script type="text/javascript" src="/scripts/client.js"></script>
+  <script type="text/javascript" src="/scripts/giphyService.js"></script>
+</head>
+<body ng-app="myApp">
+  <main ng-controller="GifController as jeezy">
+    <input type="submit" name="Random" value="Get a Random" ng-click="jeezy.randomGif()">
+    <img ng-show="jeezy.randomGifUrl" ng-src="{{jeezy.randomGifUrl}}" alt="">
 
-
-
+    <h2>Search!</h2>
+    <input ng-model="vm.searchQuery" type="text" />
+    <input type="submit" name="Search" value="CLICK FOR GIFs" ng-click="jeezy.searchGif(vm.searchQuery)">
+    <input type="submit" name="Search" value="CLICK FOR Upsilon GIFs" ng-click="jeezy.searchGif('upsilon')">
+    <img ng-repeat="gifs in jeezy.searchGifUrl" ng-show="jeezy.searchGifUrl" ng-src="{{gifs.images.original.url}}" alt="">
 
   </main>
-  </body>
+</body>
 </html>
